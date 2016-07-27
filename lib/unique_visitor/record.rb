@@ -3,12 +3,18 @@ require "redis"
 module UniqueVisitor
   class Record
     cattr_accessor :redis
-    cattr_accessor :mode
-    cattr_accessor :scope
+
+    attr_accessor :mode
+    attr_accessor :scope
 
     @@redis ||= ::Redis.current
 
     def initialize *args
+      @scope ||= :all
+    end
+
+    def store_key
+      
     end
 
     class << self
